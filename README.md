@@ -78,3 +78,10 @@ Enemigo similar al *Creep* excepto que puede comer manzanas.
 
 Este objecto es colocado al principio de cada ronda en lugares predefinidos. Son objectos que *Mr. Do* puede empujar lentamente. Si estos tienen la casilla debajo suya desocupada caeran a ella, 
 matando a todo aquello que se cruce en su camino, si la caida es de mas de 2 casillas la manzana se rompe, con una probabilidad del 5% de dejar un diamante tras de si.
+
+### Bonus item
+
+<img width="90" height="90" alt="image" src="https://github.com/user-attachments/assets/8e825661-74e9-409c-b58f-457f15a27563" />
+
+Objeto que aparece cuando los *Creeps* terminan de spawnear en el sitio desde el que spawnean. Si Mr. Do se lo come aparecera un *Alphamonster* acompañado de 3 *Munchers* y todos los *Creeps*
+se congelaran en su sitio hasta que todos los *Munchers* y el *Alphamonster* mueran. Si el alphamonster muere todos los munchers morirán junto a este.
