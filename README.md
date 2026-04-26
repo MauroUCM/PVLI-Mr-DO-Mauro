@@ -56,13 +56,15 @@ que dura unos pocos segundos donde ganará velocidad, volviendose brevemente mas
 
 Estos spawnearan un número especifico desde el centro de la pantalla de uno en uno separados por unos pocos segundos, cuando sale el último su spawn es ocupado por un bonus item que *Mr. Do* podrá coger.
 
+Si matas a todos pasas de nivel.
+
 ### Alphamonsters
 
 <img width="139" height="123" alt="image" src="https://github.com/user-attachments/assets/0e58d043-d998-45ff-a526-267a99a6fed6" />
 
 Enemigo que actua de forma identica al *Creep* excepto que aparece solo cuanto tu puntuacion llega a un multiplo de 5000 o cojes el bonus item, en este ultimo caso aparecera acompañado por 3 *munchers*.
 
-Matarlos otorga la letra que contienen dentro suya y 500 puntos.
+Matarlos otorga la letra que contienen dentro suya, 500 puntos y pasas de nivel.
 
 ### Muncher
 
@@ -72,12 +74,18 @@ Enemigo similar al *Creep* excepto que puede comer manzanas.
 
 ## Elementos del mapa
 
+### Cereza
+
+<img width="118" height="130" alt="image" src="https://github.com/user-attachments/assets/c09a9e8c-4d1c-4307-b48a-f34975fa38dd" />
+
+Este objecto aparece en grupos de 8 (4x2), son 50 puntos cada una y si coges 8 seguidas te dan un bonus de 500. Si coges todos pasas al siguiente nivel.
+
 ### Manzana
 
 <img width="193" height="218" alt="image" src="https://github.com/user-attachments/assets/ae9186c7-9463-49a5-b417-940564fc70b7" />
 
 Este objecto es colocado al principio de cada ronda en lugares predefinidos. Son objectos que *Mr. Do* puede empujar lentamente. Si estos tienen la casilla debajo suya desocupada caeran a ella, 
-matando a todo aquello que se cruce en su camino, si la caida es de mas de 2 casillas la manzana se rompe, con una probabilidad del 5% de dejar un diamante tras de si.
+matando a todo aquello que se cruce en su camino, si la caida es de mas de 1 casilla la manzana se rompe, con una probabilidad del 5% de dejar un diamante tras de si.
 
 ### Bonus item
 
@@ -85,3 +93,13 @@ matando a todo aquello que se cruce en su camino, si la caida es de mas de 2 cas
 
 Objeto que aparece cuando los *Creeps* terminan de spawnear en el sitio desde el que spawnean. Si Mr. Do se lo come aparecera un *Alphamonster* acompañado de 3 *Munchers* y todos los *Creeps*
 se congelaran en su sitio hasta que todos los *Munchers* y el *Alphamonster* mueran. Si el alphamonster muere todos los munchers morirán junto a este.
+
+### Diamante
+
+<img width="94" height="81" alt="image" src="https://github.com/user-attachments/assets/48b55a71-86bf-4209-ad31-cf86d63e09d1" />
+
+Puede spawnear con una probabilidad de 5% de una manzana y cogerla te otorga una vida extra y pasas al siquiente nivel.
+
+# Mapas
+
+<img width="1439" height="1920" alt="image" src="https://github.com/user-attachments/assets/b3b043ab-de89-46a6-9ab4-7db46fedc4a1" />
