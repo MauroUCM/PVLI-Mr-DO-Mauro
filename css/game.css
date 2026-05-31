@@ -1,4 +1,14 @@
+@font-face {
+    font-family: 'arcade';
+    src: url('../assets/fonts/arcade_n.ttf') format('truetype');
+}
+
 h1 {
-	color: blue;
+	color: rgb(214, 164, 0);
 	text-align: center;
+    font-family: 'arcade';    
+}
+
+body {
+	background-color: rgb(26, 26, 26);
 }
