@@ -19,7 +19,7 @@ export default class Boot extends Phaser.Scene {
 	create() {
 		this.createPenguinAnimations()
 		this.createRatAnimations()
-		this.scene.start('title');
+		this.scene.start('menu');
 	}
 
 	// Animaciones del Pingüino
