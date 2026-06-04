@@ -8,28 +8,38 @@ export default class Boot extends Phaser.Scene {
 
 	// Carga de recursos
 	preload(){
-		this.load.image('title', 'assets/UI/mainTitle.png');
-		this.load.image('scroll_pattern', 'assets/UI/titleScrollPattern.png');
-		this.load.image('single_mr_do', 'assets/UI/mrDoSingleSprite.png');
+		// menu
+		this.load.image('title', 'assets/UI/main_title.png');
+		this.load.image('scroll_pattern', 'assets/UI/title_scroll_pattern.png');
+		this.load.image('single_mr_do', 'assets/UI/mr_Do_single_sprite.png');
 
+		// characters
 		this.load.spritesheet('mr_do', 'assets/characters/mr_do_spritesheet.png', {frameWidth: 16, frameHeight: 16});
-		//this.load.spritesheet('mr_do', 'assets/characters/mr_do_spritesheet.png', {frameWidth: 16, frameHeight: 16});
+		this.load.spritesheet('creep', 'assets/characters/creep_spritesheet.png', {frameWidth: 16, frameHeight: 16});
+		this.load.spritesheet('muncher', 'assets/characters/muncher_spritesheet.png', {frameWidth: 16, frameHeight: 16});
+		this.load.spritesheet('alphamonster', 'assets/characters/alphamonster_spritesheet.png', {frameWidth: 16, frameHeight: 14});
+
+		// escenery
+		this.load.spritesheet('full_apple', 'assets/characters/full_apple_spritesheet.png', {frameWidth: 16, frameHeight: 15});
+		this.load.spritesheet('broken_apple', 'assets/characters/broken_apple_spritesheet.png', {frameWidth: 16, frameHeight: 15});
+		this.load.spritesheet('diamond', 'assets/characters/diamond_spritesheet.png', {frameWidth: 16, frameHeight: 9});
+		this.load.spritesheet('ground', 'assets/scenery/ground.png', {frameWidth: 16, frameHeight: 16});
 	}
 
 	// Creación de la escena.
 	create() {
-		this.createPenguinAnimations()
-		this.createRatAnimations()
-		this.scene.start('menu');
+		this.createMrDoAnimations()
+		this.createCreepAnimations()
+<		this.scene.start('menu')
 	}
 
 	// Animaciones del Pingüino
-	createPenguinAnimations(){
+	createMrDoAnimations(){
 
 	}
 
 	// Animaciones de la Rata
-	createRatAnimations(){
+	createCreepAnimations(){
 
 	}
 }

@@ -95,8 +95,8 @@ export default class Menu extends Phaser.Scene {
     chooseSelectedOption(){
         switch(this.menuState){
             case 1:
-                console.log("Continue")
-                break;
+            this.scene.start('level')
+            break;
             case 2:
                 console.log("New game")
                 break;
