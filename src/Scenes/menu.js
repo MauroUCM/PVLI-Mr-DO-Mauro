@@ -1,4 +1,4 @@
-const timeBetwActivation = 500
+const BLINK_TIME = 500
 
 export default class Menu extends Phaser.Scene {
 	constructor(){
@@ -35,7 +35,7 @@ export default class Menu extends Phaser.Scene {
 
     update(t, dt){
         if(this.menuState == 0){
-            if(this.sinceLastActivation >= timeBetwActivation){
+            if(this.sinceLastActivation >= BLINK_TIME){
                 this.pressSpace.setVisible(!this.pressSpace.visible)
                 this.sinceLastActivation = 0
             }

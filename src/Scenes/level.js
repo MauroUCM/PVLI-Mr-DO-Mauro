@@ -1,4 +1,5 @@
 import Square from "../Board/Square.js";
+import MrDo from "../Entities/MrDo.js";
 
 export default class Level extends Phaser.Scene {
 	constructor(){
@@ -24,10 +25,11 @@ export default class Level extends Phaser.Scene {
             for(let o = 0; o < 12; o++){
                 this.physics.add.existing(new Square(this, 200 + 32 * o, 100 + 32 * i, this.currentMap[auxCont]).setScale(2))
                 auxCont++;
-            }
-
-            
+            }            
         }
+
+        this.player = new MrDo(this, 200 + 32 * 5, 100 + 32 * 12).setScale(2)
+        this.physics.add.existing(this.player)
     }
 
     update(t, dt){

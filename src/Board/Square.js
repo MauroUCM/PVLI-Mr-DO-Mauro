@@ -15,7 +15,6 @@ export default class Square extends Phaser.GameObjects.Sprite{
                 break;
         }
 
-
         this.setOrigin(0,0)
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
