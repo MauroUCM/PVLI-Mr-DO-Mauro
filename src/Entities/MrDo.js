@@ -1,14 +1,17 @@
 import Character from "./Character.js";
 
 const PLAYER_SPEED = 100;
-const LOW_RATIO = 0.8
+const SLOWED_RATIO = 0.7
 
 export default class MrDo extends Character{
     constructor(scene, x, y){
         super(scene, x, y, 'mr_do');
             
-        this.setupKeys()
+        this.body.setCircle(5, 2.5, 2.5)
         this.speedRatio = 1
+
+        this.setupKeys()
+
     }
 
     preUpdate(t, dt){
@@ -26,6 +29,19 @@ export default class MrDo extends Character{
 
         this.spaceKey.on('down', ()=>{
             this.throwBall()
+        })
+
+        this.wKey.on('down', () =>{
+            this.setX(this.getClosestSquareCenterX());
+        })
+        this.aKey.on('down', () =>{
+            this.setY(this.getClosestSquareCenterY())
+        })
+        this.sKey.on('down', () =>{
+            this.setX(this.getClosestSquareCenterX());
+        })
+        this.dKey.on('down', () =>{
+            this.setY(this.getClosestSquareCenterY())
         })
     }
 
@@ -50,7 +66,7 @@ export default class MrDo extends Character{
     }
 
     slowMrDo(){
-        this.speedRatio = LOW_RATIO
+        this.speedRatio = SLOWED_RATIO
     }
 
     throwBall(){

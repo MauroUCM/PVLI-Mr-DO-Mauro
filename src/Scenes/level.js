@@ -25,8 +25,8 @@ export default class Level extends Phaser.Scene {
         let auxCont = 0;
         for(let i = 0; i < 13; i++){
             for(let o = 0; o < 12; o++){
-                this.mapIndex.push(new Square(this, 200 + 32 * o, 100 + 32 * i, map[auxCont]).setScale(2))
-                this.mapPhysicsGrp.add(this.mapIndex[auxCont])
+                this.mapIndex.push(new Square(this, 200 + 32 * o, 100 + 32 * i, map[auxCont], 0).setScale(2))
+                if(map[auxCont] != 0)this.mapPhysicsGrp.add(this.mapIndex[auxCont])
                 auxCont++;
             }            
         }
@@ -39,7 +39,6 @@ export default class Level extends Phaser.Scene {
         limits.add(this.add.zone(200 + 32 * 12, 100 + 32 * 13, 32 * 12, 32).setOrigin(1,0));    // bottom
 
         this.player = new MrDo(this, 200 + 32 * 5, 100 + 32 * 12).setScale(2)
-        this.player.body.setCircle(7, 1, 1)
         this.physics.add.existing(this.player)
 
         this.physics.add.collider(this.player, limits)
@@ -52,6 +51,10 @@ export default class Level extends Phaser.Scene {
     update(t, dt){
 
 
+    }
+
+    spawnApple(x, y){
+        
     }
 
     // 0 = vacio, 1 = tierra, 2 = manzana, 3 = cereza
