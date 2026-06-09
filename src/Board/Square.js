@@ -12,6 +12,7 @@ export default class Square extends Phaser.GameObjects.Sprite{
             break;
             case 2: // manzana
                 super(scene, x, y, 'ground', 15 + textOffset)
+                scene.spawnApple(x, y)
                 this.squareType = 1;
             break;
             case 3: // cereza
@@ -22,8 +23,7 @@ export default class Square extends Phaser.GameObjects.Sprite{
             break;
         }
 
-
-        this.setOrigin(0,0)
+        this.textOffset = textOffset
         this.scene.add.existing(this);
     }
 
@@ -36,13 +36,15 @@ export default class Square extends Phaser.GameObjects.Sprite{
         switch(this.squareType){
             case 1: // tierra
                 player.slowMrDo()
-                console.log("tierra")
-            break;
-            case 2: // manzana
-                console.log("manzana")
+                if(Math.abs(player.x - this.x) < 5 && Math.abs(player.y - this.y) < 5){
+                    this.emptySquare()
+                }
             break;
             case 3: // cereza
-                console.log("cereza")
+                if(Math.abs(player.x - this.x) < 5 && Math.abs(player.y - this.y) < 5){
+                    this.emptySquare()
+                    this.scene.addScore(200)
+                }
             break;
             default:
                 console.log("nada")
@@ -50,4 +52,8 @@ export default class Square extends Phaser.GameObjects.Sprite{
         }
     }
 
+    emptySquare(){
+        this.setFrame(17 + this.textOffset)
+        this.squareType = 0
+    }
 }
