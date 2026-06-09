@@ -4,4 +4,10 @@ export default class Apple extends Phaser.GameObjects.Sprite{
 
         this.scene.add.existing(this);
     }
+
+    preUpdate(t, dt){
+        super.preUpdate(t, dt)
+
+        this.body.setVelocity(0)
+    }
 }
