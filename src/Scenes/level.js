@@ -61,7 +61,7 @@ export default class Level extends Phaser.Scene {
     }
 
     spawnApple(x, y){
-        this.applesGrp.add(new Apple(this, x, y).setScale(2).setDepth(1))
+        this.applesGrp.add(new Apple(this, x, y).setDepth(1))
     }
 
     addScore(points){
