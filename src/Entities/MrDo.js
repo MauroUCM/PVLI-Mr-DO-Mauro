@@ -5,11 +5,14 @@ const SLOWED_RATIO = 0.7
 
 export default class MrDo extends Character{
     constructor(scene, x, y){
-        super(scene, x, y, 'mr_do');
+        super(scene, x, y, 'mr_do', 4);
             
         this.body.setCircle(5, 2.5, 2.5)
         this._speedRatio = 1
+        this.ball = true;
         this.setupKeys()
+
+        this.play('mrDoWalkBall')
 
         // mr Do "shadow"
         this._shadow = new Phaser.GameObjects.Sprite(scene, x, y, 'mr_do_shadow').setScale(2).setDepth(1)
@@ -37,22 +40,25 @@ export default class MrDo extends Character{
             this.setX(this.getClosestSquareCenterX());
             this.setRotation(-90)
             this.setFlipX(false)
+            this.activateWalkAnim()
         })
         this.aKey.on('down', () =>{
             this.setY(this.getClosestSquareCenterY())
             this.setRotation(0)
             this.setFlipX(true)
-
+            this.activateWalkAnim()
         })
         this.sKey.on('down', () =>{
             this.setX(this.getClosestSquareCenterX());
             this.setRotation(-90)
             this.setFlipX(true)
+            this.activateWalkAnim()
         })
         this.dKey.on('down', () =>{
             this.setY(this.getClosestSquareCenterY())
             this.setRotation(0)
             this.setFlipX(false)
+            this.activateWalkAnim()
         })
     }
 
@@ -73,6 +79,7 @@ export default class MrDo extends Character{
         }
         else{ 
             this.body.setVelocity(0, 0)
+            this.stop()
         }
 
         if(this._shadow != null){
@@ -82,12 +89,36 @@ export default class MrDo extends Character{
         this._speedRatio = 1
     }
 
+    activateWalkAnim(){
+        if(this.ball){
+            this.play('mrDoWalkBall')
+        }
+        else this.play('mrDoWalk')
+    }
+
     slowMrDo(){
         this._speedRatio = SLOWED_RATIO
     }
 
     throwBall(){
+        if(this.ball){
+            // Direcciones: NE = 0, SE = 1, SW = 2, NW = 3
+            if(this.rotation == 0){
+                if(this.flipX){
+                    this.scene.spawnBall(this.x, this.y, 2)
+                }
+                else this.scene.spawnBall(this.x, this.y, 1)
+            }
+            else{
+                if(this.flipX){
+                    this.scene.spawnBall(this.x, this.y, 1)
+                }
+                else this.scene.spawnBall(this.x, this.y, 0)
+            }
 
+            this.ball = false
+            this.play('mrDoWalk')
+        }
     }
 }
 

@@ -1,6 +1,7 @@
-import Square from "../Board/Square.js";
+import Tile from "../Board/Tile.js";
 import MrDo from "../Entities/MrDo.js";
 import Apple from "../Board/Apple.js";
+import Ball from "../Entities/ball.js";
 
 export default class Level extends Phaser.Scene {
 	constructor(){
@@ -23,15 +24,19 @@ export default class Level extends Phaser.Scene {
         this.mapIndex = []
 
         // physic groups
-        this.mapPhysicsGrp = this.physics.add.staticGroup()
-        this.applesGrp = this.physics.add.group()
+        this.mapTilesGrp = this.physics.add.staticGroup()
         let limits = this.physics.add.staticGroup()
+        this.ballGrp = this.physics.add.group()
+        this.applesGrp = this.physics.add.group()
 
         let auxCont = 0;
         for(let i = 0; i < 13; i++){
             for(let o = 0; o < 12; o++){
-                this.mapIndex.push(new Square(this, 216 + 32 * o, 116 + 32 * i, map[auxCont], 0).setScale(2))
-                this.mapPhysicsGrp.add(this.mapIndex[auxCont])
+                this.mapIndex.push(new Tile(this, 216 + 32 * o, 116 + 32 * i, map[auxCont], 0).setScale(2))
+                this.mapTilesGrp.add(this.mapIndex[auxCont])
+                if(map[auxCont] == 0){
+                    this.mapTilesGrp.remove(this.mapIndex[auxCont])
+                }
                 auxCont++;
             }            
         }
@@ -46,18 +51,35 @@ export default class Level extends Phaser.Scene {
         this.physics.add.existing(this.player)
 
         this.physics.add.collider(this.player, limits)
-        this.physics.add.overlap(this.player, this.mapPhysicsGrp, (player, sqr) =>{
+        this.physics.add.collider(this.applesGrp, this.player)
+        this.physics.add.overlap(this.player, this.mapTilesGrp, (player, sqr) =>{
             sqr.squareAction(player)
         })
-
-        this.physics.add.collider(this.applesGrp, this.player, () =>{
-
+        this.physics.add.collider(this.mapTilesGrp, this.ballGrp, (tile, ball) =>{
+            // if(tile.body.touching.up){
+            //     ball.ballBounce(0)
+            // }
+            // if(tile.body.touching.down){
+            //     ball.ballBounce(1)
+            // }
+            // if(tile.body.touching.right){
+            //     ball.ballBounce(2)
+            // }
+            // if(tile.body.touching.left){
+            //     ball.ballBounce(3)
+            // }
         })
-
     }
 
     update(t, dt){
+        
+    }
 
+    spawnBall(x, y, dir){
+        let ball = new Ball(this, x, y, dir).setScale(0.6)
+        this.ballGrp.add(ball)
+        ball.setDirection(dir)
+        ball.body.setBounce(1)
     }
 
     spawnApple(x, y){

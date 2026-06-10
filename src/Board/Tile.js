@@ -1,4 +1,4 @@
-export default class Square extends Phaser.GameObjects.Sprite{
+export default class Tile extends Phaser.GameObjects.Sprite{
     constructor(scene, x, y, type, level){
         let textOffset = level * 18
         switch(type){
@@ -34,6 +34,9 @@ export default class Square extends Phaser.GameObjects.Sprite{
 
     squareAction(player){
         switch(this.squareType){
+            case 0:
+                this.scene.mapTilesGrp.remove(this)
+            break;
             case 1: // tierra
                 player.slowMrDo()
                 if(Math.abs(player.x - this.x) < 5 && Math.abs(player.y - this.y) < 5){
@@ -47,7 +50,7 @@ export default class Square extends Phaser.GameObjects.Sprite{
                 }
             break;
             default:
-                console.log("nada")
+                console.log("WARNING: This square doesn't have an action")
             break;
         }
     }
