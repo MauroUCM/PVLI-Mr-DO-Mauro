@@ -1,12 +1,10 @@
 const BALL_SPEED = 100;
 
 export default class Ball extends Phaser.GameObjects.Sprite{
-    constructor(scene, x, y){
+    constructor(scene, x, y, dir){
         super(scene, x, y, 'ball')        
         this.scene.physics.add.existing(this);
         this.scene.add.existing(this);
-
-
     }
 
     preUpdate(t, dt){
