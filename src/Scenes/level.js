@@ -58,7 +58,6 @@ export default class Level extends Phaser.Scene {
         this.physics.add.collider(limits, this.ballGrp, (limit, ball) =>{
 
         })
-
         this.physics.add.collider(this.mapTilesGrp, this.ballGrp, (tile, ball) =>{
             // if(tile.body.touching.up){
             //     ball.ballBounce(0)
@@ -83,7 +82,7 @@ export default class Level extends Phaser.Scene {
         let ball = new Ball(this, x, y, dir).setScale(0.6)
         this.ballGrp.add(ball)
         ball.setDirection(dir)
-        //ball.body.setBounce(1)
+        ball.body.setBounce(1)
     }
 
     spawnApple(x, y){
