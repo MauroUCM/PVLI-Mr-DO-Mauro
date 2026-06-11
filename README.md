@@ -2,14 +2,37 @@
 
 <img width="222" height="286" alt="image" src="https://github.com/user-attachments/assets/30200eb4-cb52-483f-b4a5-7cd359774a77" />
 
+## 1 - Información general
 
-# Introduccion
+- Titulo: Mr. Do
+- Género: Arcade / Acción
+- Publico objetivo: Jugadores casuales de cualquier edad
+- Plataforma: Navegador web (PC)
+
+## 2 - Concepto
 
 Esto es una recreacion de **Mr. Do!**, un juego creado en 1982 por la compañia japonesa Universal Entertainment, en SDL con fines puramente acádemicos.
 
-En **Mr. Do!** el jugador controla a un payaso cuyo objectivo aumentar su puntuacion es conseguir cerezas cavando tuneles mientras se defiende de los enemigos *creeps* que recorren los túneles lanzandoles 
-una pelota que rebota por los tuneles hasta que vuelve a Mr. Do. Se pasa al siguiente nivel cuando: todas las cerezas sean recogidas, todos los enemigos matados, la palabra *EXTRA* deletreada 
-o un diamante encontrado.
+En **Mr. Do!** el jugador controla a un payaso cuyo objectivo es aumentar su puntuacion recolectando cerezas mientras se defiende de los diferentes enemigos que recorren los túneles lanzandoles una pelota que rebota por los tuneles hasta que vuelve a Mr. Do o impacta con un enemigo. A parte de la pelota el jugador también tendrá la capacidad de modificar el terreno cavando túneles, lo cual añade una capa táctica para evadir a los enemigos. Se pasa al siguiente nivel cuando: todas las cerezas sean recogidas, todos los enemigos matados, la palabra *EXTRA* deletreada o un diamante encontrado.
+
+### Loop principal
+1. Iniciar partida.
+2. Recoger cerezas y matar enemigos.
+3. Cumplir cualquiera de los requisitos para pasar de nivel.
+4. Repetir hasta que el número de vidas llega a 0.
+5. Pantalla con la puntución y vuelta al paso 1.
+
+## 3- Mecánicas principales
+### Movimiento
+- Movimiento 2D: *Mr. Do* se mueve a velocidad constante en 4 direcciones: arriba, abajo, derecha e izquierda
+- Cuando *Mr Do* pasa a traves de una casilla ocupada por tierra el excavará en ella dejando la casilla vacia aunque se verá ligeramente ralentizado
+### Combate
+- El **arma principal** de *Mr. Do* es una pelota que rebota por los túneles hasta que vuelve a *Mr. Do* o impacta contra un enemigo matándolo.
+  - La pelota no se podrá lanzar de vuelta hasta que vuelva hasta *Mr. Do* o pase un tiempo determinado tras impactar contra el enemigo. Este tiempo aumenta tras cada lanzamiento dejando a *Mr. Do* indefenso.
+- **Las manzanas**, son objetos repartidos por el mapa, en un principio estáticos.
+  - Estas pueden ser empujados horizontalmente por *Mr. Do*.
+  - Si una manzana tiene una casilla vacia debajo suya caera aplastando tanto a *Mr. Do* como los enemigos. Si cae a una altura de por lo menos 2 casillas se romperá.
+  - Al romperse existe la pequeña poosibilidad de que deje un diamante tras de si.
 
 # Jugabilidad
 
