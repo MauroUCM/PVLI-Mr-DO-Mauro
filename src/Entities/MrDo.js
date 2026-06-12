@@ -100,6 +100,9 @@ export default class MrDo extends Character{
         this._speedRatio = SLOWED_RATIO
     }
 
+    killPlayer(){
+    }
+
     throwBall(){
         if(this.ball){
             // Direcciones: NE = 0, SE = 1, SW = 2, NW = 3

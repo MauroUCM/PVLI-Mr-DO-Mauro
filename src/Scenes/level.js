@@ -28,6 +28,7 @@ export default class Level extends Phaser.Scene {
         let limits = this.physics.add.staticGroup()
         this.ballGrp = this.physics.add.group()
         this.applesGrp = this.physics.add.group()
+        this.enemyGrp = this.physics.add.group()
 
         let auxCont = 0;
         for(let i = 0; i < 13; i++){
@@ -52,6 +53,9 @@ export default class Level extends Phaser.Scene {
 
         this.physics.add.collider(this.player, limits)
         this.physics.add.collider(this.applesGrp, this.player)
+        this.physics.add.collider(this.player, this.enemyGrp, (player, enemy) =>{
+            player.killPlayer();
+        })
         this.physics.add.overlap(this.player, this.mapTilesGrp, (player, sqr) =>{
             sqr.squareAction(player)
         })
@@ -87,6 +91,10 @@ export default class Level extends Phaser.Scene {
 
     spawnApple(x, y){
         this.applesGrp.add(new Apple(this, x, y).setDepth(1))
+    }
+
+    spawnCreep(){
+
     }
 
     addScore(points){
