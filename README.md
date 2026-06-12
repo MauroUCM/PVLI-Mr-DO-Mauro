@@ -26,6 +26,10 @@ Esto es una recreacion de **Mr. Do!**, un juego creado en 1982 por la compañia 
 
 En **Mr. Do!** el jugador controla a un payaso cuyo objectivo es aumentar su puntuacion recolectando cerezas mientras se defiende de los diferentes enemigos que recorren los túneles lanzandoles una pelota que rebota por los tuneles hasta que vuelve a Mr. Do o impacta con un enemigo. A parte de la pelota el jugador también tendrá la capacidad de modificar el terreno cavando túneles, lo cual añade una capa táctica para evadir a los enemigos. Se pasa al siguiente nivel cuando: todas las cerezas sean recogidas, todos los enemigos matados, la palabra *EXTRA* deletreada o un diamante encontrado.
 
+![mr do](assets/gdd/mr_Do_single_sprite_gdd.png)
+
+Sprite del *Mr. Do*, el personaje controlado por el jugador.
+
 ### Loop principal
 1. Iniciar partida.
 2. Recoger cerezas y matar enemigos.
@@ -36,8 +40,7 @@ En **Mr. Do!** el jugador controla a un payaso cuyo objectivo es aumentar su pun
 ## 3- Mecánicas principales
 ### Movimiento
 - Movimiento 2D: *Mr. Do* se mueve a velocidad constante en 4 direcciones: arriba, abajo, derecha e izquierda
-- Cuando *Mr Do* pasa a traves de una casilla ocupada por tierra el excavará en ella dejando la casilla vacia aunque se verá ligeramente ralentizado
-- 
+- Cuando *Mr Do* pasa a traves de una casilla ocupada por tierra el excavará en ella dejando la casilla vacia aunque se verá ligeramente ralentizado.
 ### Combate
 - El **arma principal** de *Mr. Do* es una *power ball* que rebota por los túneles hasta que vuelve a *Mr. Do* o impacta contra un enemigo matándolo.
   - La *power ball* no se podrá lanzar de otra vez hasta que vuelva hasta *Mr. Do* o pase un tiempo determinado tras impactar contra el enemigo. Este tiempo aumenta tras cada lanzamiento dejando a *Mr. Do* indefenso mientras tanto.
@@ -45,6 +48,8 @@ En **Mr. Do!** el jugador controla a un payaso cuyo objectivo es aumentar su pun
   - Estas pueden ser empujados horizontalmente por *Mr. Do*.
   - Si una manzana tiene una casilla vacia debajo suya caera aplastando tanto a *Mr. Do* como los enemigos. Si cae a una altura de por lo menos 2 casillas se romperá.
   - Al romperse existe la pequeña poosibilidad de que deje un *diamante secreto* tras de si.
+
+![dino](assets/gdd/apple_gdd.png)
 
 ## 4 - Enemigos
 ### Mini-Dinos
@@ -55,6 +60,8 @@ Es el enemigo más común del juego, recorren los túneles ligeramente mas lento
   - De vez en cuando los *Mini-Dinos* entraran en una fase que durará unos pocos segundos donde se moverán más rápido y serán capaces de cavar sus propios túneles.
 - Al matar a todos se pasa de nivel.
 
+![dino](assets/gdd/dino_gdd.png)
+
 ### Alphamonsters
 Este es un enemigo mas raro que aparecerá cuando, o bien, *Mr. Do* consume el *bonus item* o la puntuación adquiera un valor múltiplo de 5000. Estos tienen 5 variaciones idénticas excepto por la letra de la palabra 'EXTRA' que contienen. Cuál variación spawnea se decide dependiendo del indicador en la zona superior del juego.
 - Estos actúan igual que los *Mini-Dinos* en su fase normal y mueren al ser golpeados por la bola.
@@ -63,8 +70,13 @@ Este es un enemigo mas raro que aparecerá cuando, o bien, *Mr. Do* consume el *
   - El jugador adquiere la palabra que contenían.
 - Si son spawneados cogiendo el *bonus item* serán acompañados por 3 *munchers*.
 
+![alphamonster](assets/gdd/alphamonster_gdd.png)
+
 ### Muncher
 Este enemigo actúa como el *Mini-Dino* en su fase normal. Su particularidad es que puede comer manzanas incluso cuando estas caen sobre este. Obligando a *Mr. Do* a matarlo con la *power ball*.
+
+![muncher](assets/gdd/muncher_gdd.png)
+
 
 ## 5 - Controles
 **Menú**
