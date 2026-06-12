@@ -90,6 +90,18 @@ Este enemigo actúa como el *Mini-Dino* en su fase normal. Su particularidad es 
 - **Game Over**: Cuando el contador de vidas llega a 0.
 
 ## 7 - Economía de puntos
+| **Acción**  | **Puntos** |
+| ------------- | ------------- |
+| Recolectar cereza | 50 pts |
+| Recolectar 8 cerezas sequidas | 500 pts |
+| Matar un monstruo con la *power ball* | 500 pts |
+| Matar 1 monstruo con una manzana | 1000 pts |
+| Matar 2 monstruos con una manzana | 2000 pts |
+| Matar 3 monstruos con una manzana | 4000 pts |
+| Matar 4 monstruos con una manzana | 6000 pts |
+| Matar 5+ monstruos con una manzana | 8000 pts |
+| Recolectar un diamante  | 8000 pts |
+| Recolectar *bonus food* | 500 + [Nº de la escena x 500] |
 
 ## 8 - Niveles
 
