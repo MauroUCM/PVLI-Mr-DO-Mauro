@@ -100,7 +100,7 @@ Este enemigo actúa como el *Mini-Dino* en su fase normal. Su particularidad es 
 | Matar 3 monstruos con una manzana | 4000 pts |
 | Matar 4 monstruos con una manzana | 6000 pts |
 | Matar 5+ monstruos con una manzana | 8000 pts |
-| Recolectar un diamante  | 8000 pts |
+| Recolectar un *diamante secreto*  | 8000 pts |
 | Recolectar *bonus food* | 500 + [Nº de la escena x 500] |
 
 ## 8 - Niveles
