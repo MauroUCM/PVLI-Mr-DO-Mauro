@@ -10,7 +10,7 @@
 5. [Controles](#5---controles)
 6. [Condiciones de victoria y derrota](#6---condiciones-de-victoria-y-derrota)
 7. [Economía de puntos](#7---econom%C3%ADa-de-puntos)
-8. [Niveles](#8)
+8. [Niveles](#8---niveles)
 9. [Bibliografía](#9---bibliograf%C3%ADa)
 
 ## 1 - Información general
