@@ -3,9 +3,9 @@
 <img width="222" height="286" alt="image" src="https://github.com/user-attachments/assets/30200eb4-cb52-483f-b4a5-7cd359774a77" />
 
 ## 0 - Indice
-1. [Información general](https://github.com/MauroUCM/PVLI-Mr-DO-Mauro/edit/main/README.md#1---informaci%C3%B3n-general)
-2. [Concepto](https://github.com/MauroUCM/PVLI-Mr-DO-Mauro/edit/main/README.md#2---concepto)
-3. [Mecánicas principales](https://github.com/MauroUCM/PVLI-Mr-DO-Mauro/edit/main/README.md#3--mec%C3%A1nicas-principales)
+1. [Información general](https://github.com/MauroUCM/PVLI-Mr-DO-Mauro#1---informaci%C3%B3n-general)
+2. [Concepto](https://github.com/MauroUCM/PVLI-Mr-DO-Mauro#2---concepto)
+3. [Mecánicas principales](#3--mec%C3%A1nicas-principales)
 4. [Enemigos](https://github.com/MauroUCM/PVLI-Mr-DO-Mauro/edit/main/README.md#4---enemigos)
 5. [Controles](https://github.com/MauroUCM/PVLI-Mr-DO-Mauro/edit/main/README.md#5---controles)
 6. [Condiciones de victoria y derrota](https://github.com/MauroUCM/PVLI-Mr-DO-Mauro/edit/main/README.md#6---condiciones-de-victoria-y-derrota)
