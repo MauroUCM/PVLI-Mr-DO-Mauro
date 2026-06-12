@@ -26,102 +26,46 @@ En **Mr. Do!** el jugador controla a un payaso cuyo objectivo es aumentar su pun
 ### Movimiento
 - Movimiento 2D: *Mr. Do* se mueve a velocidad constante en 4 direcciones: arriba, abajo, derecha e izquierda
 - Cuando *Mr Do* pasa a traves de una casilla ocupada por tierra el excavará en ella dejando la casilla vacia aunque se verá ligeramente ralentizado
+- 
 ### Combate
-- El **arma principal** de *Mr. Do* es una pelota que rebota por los túneles hasta que vuelve a *Mr. Do* o impacta contra un enemigo matándolo.
-  - La pelota no se podrá lanzar de vuelta hasta que vuelva hasta *Mr. Do* o pase un tiempo determinado tras impactar contra el enemigo. Este tiempo aumenta tras cada lanzamiento dejando a *Mr. Do* indefenso.
-- **Las manzanas**, son objetos repartidos por el mapa, en un principio estáticos.
+- El **arma principal** de *Mr. Do* es una *power ball* que rebota por los túneles hasta que vuelve a *Mr. Do* o impacta contra un enemigo matándolo.
+  - La *power ball* no se podrá lanzar de otra vez hasta que vuelva hasta *Mr. Do* o pase un tiempo determinado tras impactar contra el enemigo. Este tiempo aumenta tras cada lanzamiento dejando a *Mr. Do* indefenso mientras tanto.
+- **Las manzanas**, son objetos repartidos por el mapa en sus posiciones designadas, en un principio estáticos.
   - Estas pueden ser empujados horizontalmente por *Mr. Do*.
   - Si una manzana tiene una casilla vacia debajo suya caera aplastando tanto a *Mr. Do* como los enemigos. Si cae a una altura de por lo menos 2 casillas se romperá.
   - Al romperse existe la pequeña poosibilidad de que deje un diamante tras de si.
 
-# Jugabilidad
-
-## Jugador
-
-### Mr. Do
-
-<img width="156" height="156" alt="image" src="https://github.com/user-attachments/assets/804153c4-4423-49bd-9eed-0d704c6240bd" />
-
-El personaje principal controlado por el jugador. Este se puede mover verticalmente y horizontalmente, si se mueve por una casilla con tierra abrirá un túnel y el unicó bloqueo que tiene son 
-las manzanas que impediran su paso y los enemigos que lo mataran al contacto, quitandole una vida, que cuando llegan a 0 la partida se da por terminada.
-
-Este se defenderá lanzado una pelota que ira rebotando por los pasillos hasta impactar con un enemigo o ser agarrado de vuelta por Mr. Do, si impacta con el enemigo tardará un rato antes de que el jugador 
-pueda volver a usarlo.
-
-### Controles
-
-**Juego:**
-
-WASD: Mover el personaje en una dirección
-
-Z: Lanzar pelota
-
-X: Pausar / Despausar
-
-**Menús:**
-
-WASD: Mover la selección en los menús
-
-Z: Confirmar selección
-
-X: Retroceder
-
-## Enemigos
-
-Matar cualquier enemigo siempre da 500 puntos excepto si es matado por una manzana, en la que dara 1000.
-
-### Creep
-
-<img width="315" height="258" alt="image" src="https://github.com/user-attachments/assets/e231af10-cfb7-428d-af30-8138c78b5754" />
-
-El enemigo principal del juego, este se moverá por los túneles persiguiendo al *Mr. Do* ligeramente mas lento. De manera aleatoria entrá en un estado especial (indicado por la aceleracion de la musica) 
-que dura unos pocos segundos donde ganará velocidad, volviendose brevemente mas rapido que *Mr. Do*.
-
-Estos spawnearan un número especifico desde el centro de la pantalla de uno en uno separados por unos pocos segundos, cuando sale el último su spawn es ocupado por un bonus item que *Mr. Do* podrá coger.
-
-Si matas a todos pasas de nivel.
+## 4 - Enemigos
+### Mini-Dinos
+Es el enemigo más común del juego, recorren los túneles ligeramente mas lentos que Mr. Do y lo matarán al contacto.
+- Spawnean al principio de cada ronda de uno en uno cada 2 segundos desde una "madriguera" localizada en el centro del nivel.
+  - Spawnean un total entre 6 y 8.
+  - Cuando acaban de spawnear todos aparecerá un *bonus item* en lugar de la madriguera que *Mr. Do* podrá coger.
+  - De vez en cuando los *Mini-Dinos* entraran en una fase que durará unos pocos segundos donde se moverán más rápido y serán capaces de cavar sus propios túneles.
+- Al matar a todos se pasa de nivel.
 
 ### Alphamonsters
-
-<img width="139" height="123" alt="image" src="https://github.com/user-attachments/assets/0e58d043-d998-45ff-a526-267a99a6fed6" />
-
-Enemigo que actua de forma identica al *Creep* excepto que aparece solo cuanto tu puntuacion llega a un multiplo de 5000 o cojes el bonus item, en este ultimo caso aparecera acompañado por 3 *munchers*.
-
-Matarlos otorga la letra que contienen dentro suya, 500 puntos y pasas de nivel.
+Este es un enemigo mas raro que aparecerá cuando, o bien, *Mr. Do* consume el *bonus item* o la puntuación adquiera un valor múltiplo de 5000. Estos tienen 5 variaciones idénticas excepto por la letra de la palabra 'EXTRA' que contienen. Cuál variación spawnea se decide dependiendo del indicador en la zona superior del juego.
+- Estos actúan igual que los *Mini-Dinos* en su fase normal y mueren al ser golpeados por la bola.
+- Al morir:
+  - Se convierten en manzanas.
+  - El jugador adquiere la palabra que contenían.
+- Si son spawneados cogiendo el *bonus item* serán acompañados por 3 *munchers*.
 
 ### Muncher
+Este enemigo actúa como el *Mini-Dino* en su fase normal. Su particularidad es que puede comer manzanas incluso cuando estas caen sobre este. Obligando a *Mr. Do* a matarlo con la *power ball*.
 
-<img width="343" height="361" alt="image" src="https://github.com/user-attachments/assets/0f8a4897-c99a-4bce-b690-43b188307856" />
+## 5 - Controles
+**Menú**
+- WS: Mover la selección en el menú arriba o abajo.
+- Z: Confirmar selección.
+**Juego**
+- WASD: Mover el personaje en una dirección.
+- Z: Lanzar pelota.
+- X: Pausar / Despausar.
 
-Enemigo similar al *Creep* excepto que puede comer manzanas.
+## 6 - Condiciones de victoria
 
-## Elementos del mapa
-
-### Cereza
-
-<img width="118" height="130" alt="image" src="https://github.com/user-attachments/assets/c09a9e8c-4d1c-4307-b48a-f34975fa38dd" />
-
-Este objecto aparece en grupos de 8 (4x2), son 50 puntos cada una y si coges 8 seguidas te dan un bonus de 500. Si coges todos pasas al siguiente nivel.
-
-### Manzana
-
-<img width="193" height="218" alt="image" src="https://github.com/user-attachments/assets/ae9186c7-9463-49a5-b417-940564fc70b7" />
-
-Este objecto es colocado al principio de cada ronda en lugares predefinidos. Son objectos que *Mr. Do* puede empujar lentamente. Si estos tienen la casilla debajo suya desocupada caeran a ella, 
-matando a todo aquello que se cruce en su camino, si la caida es de mas de 1 casilla la manzana se rompe, con una probabilidad del 5% de dejar un diamante tras de si.
-
-### Bonus item
-
-<img width="90" height="90" alt="image" src="https://github.com/user-attachments/assets/8e825661-74e9-409c-b58f-457f15a27563" />
-
-Objeto que aparece cuando los *Creeps* terminan de spawnear en el sitio desde el que spawnean. Si Mr. Do se lo come aparecera un *Alphamonster* acompañado de 3 *Munchers* y todos los *Creeps*
-se congelaran en su sitio hasta que todos los *Munchers* y el *Alphamonster* mueran. Si el alphamonster muere todos los munchers morirán junto a este.
-
-### Diamante
-
-<img width="94" height="81" alt="image" src="https://github.com/user-attachments/assets/48b55a71-86bf-4209-ad31-cf86d63e09d1" />
-
-Puede spawnear con una probabilidad de 5% de una manzana y cogerla te otorga una vida extra y pasas al siquiente nivel.
 
 # Mapas
 
