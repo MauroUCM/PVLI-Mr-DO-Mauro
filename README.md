@@ -3,15 +3,15 @@
 <img width="222" height="286" alt="image" src="https://github.com/user-attachments/assets/30200eb4-cb52-483f-b4a5-7cd359774a77" />
 
 ## 0 - Indice
-1. [Información general](https://github.com/MauroUCM/PVLI-Mr-DO-Mauro#1---informaci%C3%B3n-general)
-2. [Concepto](https://github.com/MauroUCM/PVLI-Mr-DO-Mauro#2---concepto)
+1. [Información general](#1---informaci%C3%B3n-general)
+2. [Concepto](#2---concepto)
 3. [Mecánicas principales](#3--mec%C3%A1nicas-principales)
-4. [Enemigos](https://github.com/MauroUCM/PVLI-Mr-DO-Mauro/edit/main/README.md#4---enemigos)
-5. [Controles](https://github.com/MauroUCM/PVLI-Mr-DO-Mauro/edit/main/README.md#5---controles)
-6. [Condiciones de victoria y derrota](https://github.com/MauroUCM/PVLI-Mr-DO-Mauro/edit/main/README.md#6---condiciones-de-victoria-y-derrota)
-7. [Economía de puntos](https://github.com/MauroUCM/PVLI-Mr-DO-Mauro/edit/main/README.md#7---econom%C3%ADa-de-puntos)
-8. [Niveles](https://github.com/MauroUCM/PVLI-Mr-DO-Mauro/edit/main/README.md#7---econom%C3%ADa-de-puntuaci%C3%B3n)
-9. [Bibliografía](https://github.com/MauroUCM/PVLI-Mr-DO-Mauro/edit/main/README.md#9---bibliograf%C3%ADa)
+4. [Enemigos](#4---enemigos)
+5. [Controles](#5---controles)
+6. [Condiciones de victoria y derrota](#6---condiciones-de-victoria-y-derrota)
+7. [Economía de puntos](#7---econom%C3%ADa-de-puntos)
+8. [Niveles](#8)
+9. [Bibliografía](#9---bibliograf%C3%ADa)
 
 ## 1 - Información general
 
