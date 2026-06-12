@@ -15,12 +15,13 @@ export default class Boot extends Phaser.Scene {
 
 		// characters 
 		this.load.spritesheet('mr_do', 'assets/characters/mr_do_spritesheet.png', {frameWidth: 16, frameHeight: 16});
-		this.load.spritesheet('creep', 'assets/characters/creep_spritesheet.png', {frameWidth: 16, frameHeight: 16});
+		this.load.spritesheet('dead_mr_do', 'assets/characters/dead_mr_do_spritesheet.png', {frameWidth: 16, frameHeight: 16});
+		this.load.spritesheet('dino', 'assets/characters/dino_spritesheet.png', {frameWidth: 16, frameHeight: 16});
+		this.load.spritesheet('dead_dino', 'assets/characters/dead_dino_spritesheet.png', {frameWidth: 16, frameHeight: 16});
 		this.load.spritesheet('muncher', 'assets/characters/muncher_spritesheet.png', {frameWidth: 16, frameHeight: 16});
 		this.load.spritesheet('alphamonster', 'assets/characters/alphamonster_spritesheet.png', {frameWidth: 16, frameHeight: 14});
 		this.load.image('mr_do_shadow', 'assets/characters/mr_do_shadow.png');
 		this.load.image('ball', 'assets/characters/ball.png');
-
 
 		// escenery
 		this.load.spritesheet('full_apple', 'assets/scenery/full_apple_spritesheet.png', {frameWidth: 16, frameHeight: 15});
