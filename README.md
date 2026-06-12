@@ -11,7 +11,7 @@
 
 ## 2 - Concepto
 
-Esto es una recreacion de **Mr. Do!**, un juego creado en 1982 por la compañia japonesa Universal Entertainment, en SDL con fines puramente acádemicos.
+Esto es una recreacion de **Mr. Do!**, un juego creado en 1982 por la compañia japonesa Universal Entertainment, en Phaser con fines puramente acádemicos.
 
 En **Mr. Do!** el jugador controla a un payaso cuyo objectivo es aumentar su puntuacion recolectando cerezas mientras se defiende de los diferentes enemigos que recorren los túneles lanzandoles una pelota que rebota por los tuneles hasta que vuelve a Mr. Do o impacta con un enemigo. A parte de la pelota el jugador también tendrá la capacidad de modificar el terreno cavando túneles, lo cual añade una capa táctica para evadir a los enemigos. Se pasa al siguiente nivel cuando: todas las cerezas sean recogidas, todos los enemigos matados, la palabra *EXTRA* deletreada o un diamante encontrado.
 
@@ -33,7 +33,7 @@ En **Mr. Do!** el jugador controla a un payaso cuyo objectivo es aumentar su pun
 - **Las manzanas**, son objetos repartidos por el mapa en sus posiciones designadas, en un principio estáticos.
   - Estas pueden ser empujados horizontalmente por *Mr. Do*.
   - Si una manzana tiene una casilla vacia debajo suya caera aplastando tanto a *Mr. Do* como los enemigos. Si cae a una altura de por lo menos 2 casillas se romperá.
-  - Al romperse existe la pequeña poosibilidad de que deje un diamante tras de si.
+  - Al romperse existe la pequeña poosibilidad de que deje un *diamante secreto* tras de si.
 
 ## 4 - Enemigos
 ### Mini-Dinos
@@ -64,9 +64,26 @@ Este enemigo actúa como el *Mini-Dino* en su fase normal. Su particularidad es 
 - Z: Lanzar pelota.
 - X: Pausar / Despausar.
 
-## 6 - Condiciones de victoria
+## 6 - Condiciones de victoria y derrota
+### Victoria
+- Consumir todas las cerezas presentes en el nivel.
+- Eliminar a todos los *Mini-Dinos* presentes en el nivel.
+- Completar la palabra E-X-T-R-A. -
+  -  Al jugador le será ortogada una vida extra.
+- Adquirir un *diamante secreto* que las manzanas tienen la pequeña posibilidad de dejar tras de si al romperse.
+  - Al jugador le será ortogada una vida extra.
+### Derrota
+- Se pierde una vida:
+  - *Mr. Do* es tocado por un enemigo.
+  - Una manza cae sobre *Mr. Do*.
+- **Game Over**: Cuando el contador de vidas llega a 0.
 
+## 7 - Economía de puntos
 
-# Mapas
+## 8 - Niveles
 
 <img width="1439" height="1920" alt="image" src="https://github.com/user-attachments/assets/b3b043ab-de89-46a6-9ab4-7db46fedc4a1" />
+
+## 9 - Bibliografía
+- [Strategywiki:](https://strategywiki.org/wiki/Mr._Do!) Informacion acerca del juego.
+- [The Spriters Resource:](https://www.spriters-resource.com/arcade/mrdo/) Sprites del juego.
