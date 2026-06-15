@@ -24,6 +24,8 @@ export default class Level extends Phaser.Scene {
         let map = this.loadMap();
         this.mapIndex = []
 
+        
+
         // physic groups
         this.mapTilesGrp = this.physics.add.staticGroup()
         let limits = this.physics.add.staticGroup()
