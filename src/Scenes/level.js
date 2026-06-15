@@ -14,6 +14,7 @@ export default class Level extends Phaser.Scene {
     init(data){
         this.score = 0
         this.lives = 3
+        this.cherries = 0;
     }
 
     preload(){
