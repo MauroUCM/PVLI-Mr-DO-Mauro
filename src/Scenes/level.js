@@ -13,6 +13,7 @@ export default class Level extends Phaser.Scene {
 
     init(data){
         this.score = 0
+        this.lives = 3
     }
 
     preload(){
@@ -30,6 +31,13 @@ export default class Level extends Phaser.Scene {
         this.applesGrp = this.physics.add.group()
         this.enemyGrp = this.physics.add.group()
 
+        // player limits
+        limits.add(this.add.zone(200, 100, 32, 32 * 13).setOrigin(1,0));                        // left
+        limits.add(this.add.zone(200 + 32 * 12, 100, 32, 32 * 13).setOrigin(0,0));              // right
+        limits.add(this.add.zone(200, 100, 32 * 12, 32).setOrigin(0,1));                        // top
+        limits.add(this.add.zone(200 + 32 * 12, 100 + 32 * 13, 32 * 12, 32).setOrigin(1,0));    // bottom
+
+        // map tiles
         let auxCont = 0;
         for(let i = 0; i < 13; i++){
             for(let o = 0; o < 12; o++){
@@ -42,14 +50,15 @@ export default class Level extends Phaser.Scene {
             }            
         }
 
-        // player limits
-        limits.add(this.add.zone(200, 100, 32, 32 * 13).setOrigin(1,0));                        // left
-        limits.add(this.add.zone(200 + 32 * 12, 100, 32, 32 * 13).setOrigin(0,0));              // right
-        limits.add(this.add.zone(200, 100, 32 * 12, 32).setOrigin(0,1));                        // top
-        limits.add(this.add.zone(200 + 32 * 12, 100 + 32 * 13, 32 * 12, 32).setOrigin(1,0));    // bottom
+        // UI
+        this.scoreText = this.drawText(this.game.config.width * 0.70, this.game.config.height * 0.88,  "SCORE: " + this.score , 15) .setOrigin(1, 0)
+        this.livesText = this.drawText(this.game.config.width * 0.3, this.game.config.height * 0.88,  "x " + this.lives , 15) .setOrigin(0, 0)
+        this.add.image(this.game.config.width * 0.26, this.game.config.height * 0.89, 'single_mr_do').setScale(2)
 
+        // player
         this.player = new MrDo(this, 216 + 32 * 5, 116 + 32 * 12).setScale(2).setDepth(2)
         this.physics.add.existing(this.player)
+
 
         this.physics.add.collider(this.player, limits)
         this.physics.add.collider(this.applesGrp, this.player)
@@ -59,8 +68,10 @@ export default class Level extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.mapTilesGrp, (player, sqr) =>{
             sqr.squareAction(player)
         })
-        this.physics.add.collider(limits, this.ballGrp, (limit, ball) =>{
-
+        this.physics.add.collider(limits, this.ballGrp, (limit, ball) =>{})
+        this.physics.add.collider(this.player, this.ballGrp, (player, ball) =>{
+            player.reload()
+            ball.destroy()
         })
         this.physics.add.collider(this.mapTilesGrp, this.ballGrp, (tile, ball) =>{
             // if(tile.body.touching.up){
@@ -97,8 +108,13 @@ export default class Level extends Phaser.Scene {
 
     }
 
+    updateScore(){
+        this.scoreText.setText("SCORE: " + this.score)
+    }
+
     addScore(points){
         this.score += points
+        this.updateScore()
     }
 
     // 0 = vacio, 1 = tierra, 2 = manzana, 3 = cereza
@@ -118,5 +134,11 @@ export default class Level extends Phaser.Scene {
             0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
         ];
+    }
+
+        drawText(x, y, text, size){
+        return this.add.text(x, y,  text, {
+            fontFamily: 'arcade' , color: '#ffffff', fontSize: size
+        }).setOrigin(0.5, 0)
     }
 }

@@ -100,6 +100,11 @@ export default class MrDo extends Character{
         this._speedRatio = SLOWED_RATIO
     }
 
+    reload(){
+        this.ball = true;
+        this.play('mrDoWalkBall')
+    }
+
     killPlayer(){
     }
 
@@ -108,15 +113,15 @@ export default class MrDo extends Character{
             // Direcciones: NE = 0, SE = 1, SW = 2, NW = 3
             if(this.rotation == 0){
                 if(this.flipX){
-                    this.scene.spawnBall(this.x, this.y, 2)
+                    this.scene.spawnBall(this.x - 20, this.y, 2)
                 }
-                else this.scene.spawnBall(this.x, this.y, 1)
+                else this.scene.spawnBall(this.x + 20, this.y, 1)
             }
             else{
                 if(this.flipX){
-                    this.scene.spawnBall(this.x, this.y, 1)
+                    this.scene.spawnBall(this.x, this.y + 20, 1)
                 }
-                else this.scene.spawnBall(this.x, this.y, 0)
+                else this.scene.spawnBall(this.x , this.y - 20, 0)
             }
 
             this.ball = false

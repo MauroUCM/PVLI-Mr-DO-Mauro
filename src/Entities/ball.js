@@ -1,4 +1,4 @@
-const BALL_SPEED = 100;
+const BALL_SPEED = 200;
 
 export default class Ball extends Phaser.GameObjects.Sprite{
     constructor(scene, x, y, dir){
