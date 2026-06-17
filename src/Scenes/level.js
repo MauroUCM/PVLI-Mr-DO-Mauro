@@ -2,6 +2,7 @@ import Tile from "../Board/Tile.js";
 import MrDo from "../Entities/MrDo.js";
 import Apple from "../Board/Apple.js";
 import Ball from "../Entities/ball.js";
+import Dino from "../Entities/Dino.js";
 
 export default class Level extends Phaser.Scene {
 	constructor(){
@@ -51,9 +52,11 @@ export default class Level extends Phaser.Scene {
             }            
         }
 
+        this.spawnDino()
+
         // UI
         this.scoreText = this.drawText(this.game.config.width * 0.70, this.game.config.height * 0.88,  "SCORE: " + this.score , 15) .setOrigin(1, 0)
-        this.livesText = this.drawText(this.game.config.width * 0.3, this.game.config.height * 0.88,  "x " + this.lives , 15) .setOrigin(0, 0)
+        this.livesText = this.drawText(this.game.config.width * 0.3, this.game.config.height * 0.88,  "x " + this.lives, 15) .setOrigin(0, 0)
         this.add.image(this.game.config.width * 0.26, this.game.config.height * 0.89, 'single_mr_do').setScale(2)
 
         // player
@@ -63,14 +66,14 @@ export default class Level extends Phaser.Scene {
 
         this.physics.add.collider(this.player, limits)
         this.physics.add.collider(this.applesGrp, this.player)
-        this.physics.add.collider(this.player, this.enemyGrp, (player, enemy) =>{
-            player.killPlayer();
+        this.physics.add.overlap(this.player, this.enemyGrp, (player, enemy) =>{
+            this.killPlayer();
         })
         this.physics.add.overlap(this.player, this.mapTilesGrp, (player, sqr) =>{
             sqr.squareAction(player)
         })
         this.physics.add.collider(limits, this.ballGrp, (limit, ball) =>{})
-        this.physics.add.collider(this.player, this.ballGrp, (player, ball) =>{
+        this.physics.add.overlap(this.player, this.ballGrp, (player, ball) =>{
             player.reload()
             ball.destroy()
         })
@@ -105,17 +108,24 @@ export default class Level extends Phaser.Scene {
         this.applesGrp.add(new Apple(this, x, y).setDepth(1))
     }
 
-    spawnCreep(){
-
+    spawnDino(){
+        this.enemyGrp.add(new Dino(this, this.game.config.width * 0.47, this.game.config.height / 2 ).setScale(2))
     }
 
-    updateScore(){
+    updateUI(){
         this.scoreText.setText("SCORE: " + this.score)
+        this.livesText.setText("x " + this.lives)
     }
 
     addScore(points){
         this.score += points
-        this.updateScore()
+        this.updateUI()
+    }
+
+    killPlayer(){
+        this.lives -= 1;
+        this.updateUI()
+        this.player.die()
     }
 
     // 0 = vacio, 1 = tierra, 2 = manzana, 3 = cereza

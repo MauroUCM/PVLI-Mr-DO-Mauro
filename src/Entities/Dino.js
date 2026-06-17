@@ -2,7 +2,7 @@ import Character from "./Character.js";
 
 export default class Dino extends Character{
     constructor(scene, x, y){
-        super(scene, x, y)
+        super(scene, x, y, 'dino')
         this.speed = 70;
          
 

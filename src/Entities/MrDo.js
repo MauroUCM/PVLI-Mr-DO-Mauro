@@ -105,7 +105,9 @@ export default class MrDo extends Character{
         this.play('mrDoWalkBall')
     }
 
-    killPlayer(){
+    die(){
+
+
     }
 
     throwBall(){
