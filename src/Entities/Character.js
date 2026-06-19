@@ -19,5 +19,12 @@ export default class Character extends Phaser.GameObjects.Sprite{
     preUpdate(t, dt){
         super.preUpdate(t, dt)
     }
+
+    die(type){
+        if(type == 'regular'){
+            this.scene.addScore(500)
+            this.destroy()
+        }  
+    }
     
 }

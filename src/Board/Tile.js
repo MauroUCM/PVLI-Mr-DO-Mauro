@@ -18,6 +18,7 @@ export default class Tile extends Phaser.GameObjects.Sprite{
             case 3: // cereza
                 super(scene, x, y, 'ground', 16 + textOffset)
                 this.squareType = type
+                this.scene.remainingCherries++;
             break;
             default:
             break;
@@ -46,7 +47,8 @@ export default class Tile extends Phaser.GameObjects.Sprite{
             case 3: // cereza
                 if(Math.abs(player.x - this.x) < 5 && Math.abs(player.y - this.y) < 5){
                     this.emptySquare()
-                    this.scene.addScore(200)
+                    this.scene.addScore(50)
+                    this.scene.remainingCherries--;
                 }
             break;
             default:

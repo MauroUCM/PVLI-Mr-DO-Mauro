@@ -15,7 +15,9 @@ export default class Level extends Phaser.Scene {
     init(data){
         this.score = 0
         this.lives = 3
-        this.cherries = 0;
+        this.remainingCherries = 0;
+        this.remainingEnemies = 7
+        this.currentEnemies = 0
     }
 
     preload(){
@@ -69,6 +71,14 @@ export default class Level extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.enemyGrp, (player, enemy) =>{
             this.killPlayer();
         })
+        this.physics.add.overlap(this.ballGrp, this.enemyGrp, (ball, enemy)=>{
+            enemy.die('regular')
+            this.remainingEnemies--
+            this.currentEnemies--
+            ball.destroy()
+            this.player.reload()
+        })
+
         this.physics.add.overlap(this.player, this.mapTilesGrp, (player, sqr) =>{
             sqr.squareAction(player)
         })
@@ -109,7 +119,9 @@ export default class Level extends Phaser.Scene {
     }
 
     spawnDino(){
-        this.enemyGrp.add(new Dino(this, this.game.config.width * 0.47, this.game.config.height / 2 ).setScale(2))
+        let dino = new Dino(this, this.game.config.width * 0.47, this.game.config.height / 2 ).setScale(2)
+        this.currentEnemies++;
+        this.enemyGrp.add(dino)
     }
 
     updateUI(){
@@ -147,9 +159,9 @@ export default class Level extends Phaser.Scene {
         ];
     }
 
-        drawText(x, y, text, size){
-        return this.add.text(x, y,  text, {
-            fontFamily: 'arcade' , color: '#ffffff', fontSize: size
-        }).setOrigin(0.5, 0)
+    drawText(x, y, text, size){
+    return this.add.text(x, y,  text, {
+        fontFamily: 'arcade' , color: '#ffffff', fontSize: size
+    }).setOrigin(0.5, 0)
     }
 }

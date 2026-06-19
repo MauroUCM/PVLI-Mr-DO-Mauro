@@ -6,7 +6,6 @@ export default class Dino extends Character{
         this.speed = 70;
          
 
-
     }
 
     preUpdate(t, dt){
@@ -18,5 +17,11 @@ export default class Dino extends Character{
     relocateToCenter(){
         this.x = this.getClosestSquareCenterX()
         this.y = this.getClosestSquareCenterY()
+    }
+
+    die(type){
+
+        
+        super.die(type)
     }
 }
