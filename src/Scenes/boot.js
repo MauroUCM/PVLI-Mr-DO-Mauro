@@ -23,11 +23,12 @@ export default class Boot extends Phaser.Scene {
 		this.load.image('mr_do_shadow', 'assets/characters/mr_do_shadow.png');
 		this.load.image('ball', 'assets/characters/ball.png');
 
-		// escenery
+		// scenery
 		this.load.spritesheet('full_apple', 'assets/scenery/full_apple_spritesheet.png', {frameWidth: 16, frameHeight: 15});
 		this.load.spritesheet('broken_apple', 'assets/scenery/broken_apple_spritesheet.png', {frameWidth: 16, frameHeight: 15});
 		this.load.spritesheet('diamond', 'assets/scenery/diamond_spritesheet.png', {frameWidth: 16, frameHeight: 9});
 		this.load.spritesheet('ground', 'assets/scenery/ground.png', {frameWidth: 16, frameHeight: 16});
+		this.load.spritesheet('dino_spawner', 'assets/scenery/dino_spawner.png', {frameWidth: 16, frameHeight: 16});
 	}
 
 	// Creación de la escena.
