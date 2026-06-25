@@ -4,7 +4,6 @@ export default class DinoSpawner extends Phaser.GameObjects.Sprite{
     constructor(scene, x, y, enemies){
         super(scene, x, y, 'dino_spawner')
 
-
         this.enemiesLeft = enemies
         this.timeElapsedSpawn = 0
     }
@@ -30,8 +29,8 @@ export default class DinoSpawner extends Phaser.GameObjects.Sprite{
     }
 
     killSpawner(){
+        this.scene.spawnBonus(this.x, this.y)
         this.destroy()
-
     }
 
 }

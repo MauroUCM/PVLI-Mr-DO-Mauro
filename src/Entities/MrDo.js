@@ -12,6 +12,8 @@ export default class MrDo extends Character{
         this.ball = true;
         this.setupKeys()
 
+        this.OGPosition = { x: x, y: y };
+
         this.play('mrDoWalkBall')
 
         // mr Do "shadow"
@@ -105,9 +107,8 @@ export default class MrDo extends Character{
         this.play('mrDoWalkBall')
     }
 
-    die(){
-
-
+    resetOGPosition(){
+        this.setPosition(this.OGPosition.x, this.OGPosition.y)
     }
 
     throwBall(){

@@ -28,6 +28,7 @@ export default class Level extends Phaser.Scene {
     create(){
         let map = this.loadMap(this.level);
         this.mapIndex = []
+        this.enemyIndex = []
 
         // physic groups
         this.mapTilesGrp = this.physics.add.staticGroup()
@@ -158,6 +159,7 @@ export default class Level extends Phaser.Scene {
         let dino = new Dino(this, x, y).setScale(2)
         this.currentEnemies++;
         this.enemyGrp.add(dino)
+        this.enemyIndex.push(dino)
     }
 
     spawnBonus(x, y){
@@ -175,9 +177,20 @@ export default class Level extends Phaser.Scene {
     }
 
     killPlayer(){
-        this.lives -= 1;
+        this.lives -= 1
+        this.resetLevel()
         this.updateUI()
-        this.player.die()
+    }
+
+    resetLevel(){
+        // kill all enemies 
+        this.enemyIndex.forEach((dino)=>{
+            dino.destroy()
+        })
+        this.enemyIndex = []
+
+        this.add.existing(new DinoSpawner(this, this.game.config.width * 0.47, this.game.config.height * 0.51, this.remainingEnemies).setScale(2).setOrigin(0.5))
+        this.player.resetOGPosition()
     }
 
     // 0 = vacio, 1 = tierra, 2 = manzana, 3 = cereza
@@ -219,10 +232,6 @@ export default class Level extends Phaser.Scene {
             break;
         }
         
-    }
-
-    resetLevel(){
-
     }
 
     drawText(x, y, text, size){

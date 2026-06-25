@@ -22,8 +22,6 @@ export default class Dino extends Character{
     }
 
     die(type){
-
-        
         super.die(type)
     }
 }
