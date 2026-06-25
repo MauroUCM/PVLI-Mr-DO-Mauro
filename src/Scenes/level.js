@@ -3,20 +3,21 @@ import MrDo from "../Entities/MrDo.js";
 import Apple from "../Board/Apple.js";
 import Ball from "../Entities/ball.js";
 import Dino from "../Entities/Dino.js";
+import DinoSpawner from "../Board/dinoSpawner.js";
+import BonusItem from "../Board/bonusItem.js";
 
 export default class Level extends Phaser.Scene {
 	constructor(){
 		super({ key: 'level' });
 
-
-
 	}
 
     init(data){
-        this.score = 0
-        this.lives = 3
+        this.level = data.level
+        this.score = data.score
+        this.lives = data.lives
         this.remainingCherries = 0;
-        this.remainingEnemies = 7
+        this.remainingEnemies = 2
         this.currentEnemies = 0
     }
 
@@ -34,6 +35,8 @@ export default class Level extends Phaser.Scene {
         this.ballGrp = this.physics.add.group()
         this.applesGrp = this.physics.add.group()
         this.enemyGrp = this.physics.add.group()
+        this.bonusItemGrp = this.physics.add.group()
+
 
         // player limits
         limits.add(this.add.zone(200, 100, 32, 32 * 13).setOrigin(1,0));                        // left
@@ -54,23 +57,39 @@ export default class Level extends Phaser.Scene {
             }            
         }
 
-        this.spawnDino()
+        this.add.existing(new DinoSpawner(this, this.game.config.width * 0.47, this.game.config.height * 0.51, this.remainingEnemies).setScale(2).setOrigin(0.5))
 
         // UI
-        this.scoreText = this.drawText(this.game.config.width * 0.70, this.game.config.height * 0.88,  "SCORE: " + this.score , 15) .setOrigin(1, 0)
-        this.livesText = this.drawText(this.game.config.width * 0.3, this.game.config.height * 0.88,  "x " + this.lives, 15) .setOrigin(0, 0)
+        this.scoreText = this.drawText(this.game.config.width * 0.70, this.game.config.height * 0.88,  "SCORE: " + this.score , 15).setOrigin(1, 0)
+        this.livesText = this.drawText(this.game.config.width * 0.3, this.game.config.height * 0.88,  "x " + this.lives, 15).setOrigin(0, 0)
+        this.extraText = this.drawText(this.game.config.width * 0.24, this.game.config.height * 0.93,  "EXTRA", 15).setOrigin(0.0)
         this.add.image(this.game.config.width * 0.26, this.game.config.height * 0.89, 'single_mr_do').setScale(2)
 
         // player
         this.player = new MrDo(this, 216 + 32 * 5, 116 + 32 * 12).setScale(2).setDepth(2)
         this.physics.add.existing(this.player)
 
-
+        //#region colisions
+        // player collisions
         this.physics.add.collider(this.player, limits)
-        this.physics.add.collider(this.applesGrp, this.player)
-        this.physics.add.overlap(this.player, this.enemyGrp, (player, enemy) =>{
+        this.physics.add.collider(this.player, this.applesGrp)
+        this.physics.add.overlap(this.player, this.mapTilesGrp, (player, sqr)=>{
+            sqr.squareAction(player)
+        })
+        this.physics.add.overlap(this.player, this.enemyGrp, (player, enemy)=>{
             this.killPlayer();
         })
+        this.physics.add.overlap(this.player, this.ballGrp, (player, ball)=>{
+            player.reload()
+            ball.destroy()
+        })
+        this.physics.add.overlap(this.player, this.bonusItemGrp, ()=>{
+            this.addScore((this.level + 1) * 500)
+        })
+
+        // ball collisions
+        this.physics.add.collider(this.ballGrp, this.mapTilesGrp)
+        this.physics.add.collider(this.ballGrp, limits)
         this.physics.add.overlap(this.ballGrp, this.enemyGrp, (ball, enemy)=>{
             enemy.die('regular')
             this.remainingEnemies--
@@ -79,15 +98,7 @@ export default class Level extends Phaser.Scene {
             this.player.reload()
         })
 
-        this.physics.add.overlap(this.player, this.mapTilesGrp, (player, sqr) =>{
-            sqr.squareAction(player)
-        })
-        this.physics.add.collider(limits, this.ballGrp, (limit, ball) =>{})
-        this.physics.add.overlap(this.player, this.ballGrp, (player, ball) =>{
-            player.reload()
-            ball.destroy()
-        })
-        this.physics.add.collider(this.mapTilesGrp, this.ballGrp, (tile, ball) =>{
+        this.physics.add.collider(this.ballGrp,this.mapTilesGrp, (tile, ball) =>{
             // if(tile.body.touching.up){
             //     ball.ballBounce(0)
             // }
@@ -101,10 +112,18 @@ export default class Level extends Phaser.Scene {
             //     ball.ballBounce(3)
             // }
         })
+        //#endregion
     }
 
     update(t, dt){
-        
+        if(this.remainingEnemies <= 0){
+            this.scene.start('end', {
+                level: this.level,
+                score: this.score,
+                lives: this.lives
+            })
+
+        }
     }
 
     spawnBall(x, y, dir){
@@ -118,10 +137,14 @@ export default class Level extends Phaser.Scene {
         this.applesGrp.add(new Apple(this, x, y).setDepth(1))
     }
 
-    spawnDino(){
-        let dino = new Dino(this, this.game.config.width * 0.47, this.game.config.height / 2 ).setScale(2)
+    spawnDino(x, y){
+        let dino = new Dino(this, x, y).setScale(2)
         this.currentEnemies++;
         this.enemyGrp.add(dino)
+    }
+
+    spawnBonus(x, y){
+        
     }
 
     updateUI(){

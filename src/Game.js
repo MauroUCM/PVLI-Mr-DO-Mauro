@@ -1,6 +1,7 @@
 import Boot from "./Scenes/boot.js";
 import Menu from "./Scenes/menu.js"
 import Level from "./Scenes/level.js";
+import End from "./Scenes/end.js";
 
 let config = {
 	type: Phaser.AUTO,
@@ -22,12 +23,12 @@ let config = {
 		},
 		zoom: 1
 	},
-	scene: [Boot, Menu, Level],
+	scene: [Boot, Menu, Level, End],
 	physics: { 
 		default: 'arcade', 
 		arcade: { 
 			gravity: { y: 0 }, 
-			debug: true 
+			debug: false 
 		},
 		checkCollision: {
 			up: true,
