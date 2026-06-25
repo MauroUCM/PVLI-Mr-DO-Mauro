@@ -26,11 +26,11 @@ export default class DinoSpawner extends Phaser.GameObjects.Sprite{
 
         if(this.enemiesLeft <= 0){
             this.killSpawner()
-            this.destroy()
         }
     }
 
     killSpawner(){
+        this.destroy()
 
     }
 

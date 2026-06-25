@@ -5,7 +5,7 @@ const DINO_SPEED = 80;
 export default class Dino extends Character{
     constructor(scene, x, y){
         super(scene, x, y, 'dino')
-        this.speed = 70;
+        this.speed = DINO_SPEED;
          
 
     }
@@ -13,7 +13,7 @@ export default class Dino extends Character{
     preUpdate(t, dt){
         super.preUpdate(t, dt)
 
-        
+        this.body.setVelocity(0, this.speed)
     }
 
     relocateToCenter(){

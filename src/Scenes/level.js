@@ -26,7 +26,7 @@ export default class Level extends Phaser.Scene {
     }
 
     create(){
-        let map = this.loadMap();
+        let map = this.loadMap(this.level);
         this.mapIndex = []
 
         // physic groups
@@ -48,7 +48,7 @@ export default class Level extends Phaser.Scene {
         let auxCont = 0;
         for(let i = 0; i < 13; i++){
             for(let o = 0; o < 12; o++){
-                this.mapIndex.push(new Tile(this, 216 + 32 * o, 116 + 32 * i, map[auxCont], 0).setScale(2))
+                this.mapIndex.push(new Tile(this, 216 + 32 * o, 116 + 32 * i, map[auxCont], this.level).setScale(2))
                 this.mapTilesGrp.add(this.mapIndex[auxCont])
                 if(map[auxCont] == 0){
                     this.mapTilesGrp.remove(this.mapIndex[auxCont])
@@ -97,7 +97,6 @@ export default class Level extends Phaser.Scene {
             ball.destroy()
             this.player.reload()
         })
-
         this.physics.add.collider(this.ballGrp,this.mapTilesGrp, (tile, ball) =>{
             // if(tile.body.touching.up){
             //     ball.ballBounce(0)
@@ -112,6 +111,9 @@ export default class Level extends Phaser.Scene {
             //     ball.ballBounce(3)
             // }
         })
+
+        // enemy collisions
+        this.physics.add.collider(this.enemyGrp, limits)
         //#endregion
     }
 
@@ -164,22 +166,44 @@ export default class Level extends Phaser.Scene {
     }
 
     // 0 = vacio, 1 = tierra, 2 = manzana, 3 = cereza
-    loadMap(){
-        return [
-            1, 1, 2, 1, 0, 0, 0, 0, 0, 0, 1, 1,
-            3, 3, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1,
-            3, 3, 1, 1, 2, 0, 3, 3, 3, 3, 0, 0,
-            3, 3, 1, 3, 3, 0, 3, 3, 3, 3, 2, 0,
-            3, 3, 1, 3, 3, 0, 1, 1, 2, 1, 1, 0,
-            1, 1, 2, 3, 3, 0, 1, 1, 1, 1, 1, 0,
-            1, 1, 1, 3, 3, 0, 1, 1, 3, 3, 1, 0,
-            1, 1, 1, 1, 1, 0, 1, 1, 3, 3, 1, 0,
-            3, 3, 3, 3, 1, 0, 1, 2, 3, 3, 1, 0,
-            3, 3, 3, 3, 1, 0, 1, 1, 3, 3, 1, 0,
-            0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0,
-            0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
-        ];
+    loadMap(level){
+        switch(level){
+            case 0:
+                return [
+                    1, 1, 2, 1, 0, 0, 0, 0, 0, 0, 1, 1,
+                    3, 3, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1,
+                    3, 3, 1, 1, 2, 0, 3, 3, 3, 3, 0, 0,
+                    3, 3, 1, 3, 3, 0, 3, 3, 3, 3, 2, 0,
+                    3, 3, 1, 3, 3, 0, 1, 1, 2, 1, 1, 0,
+                    1, 1, 2, 3, 3, 0, 1, 1, 1, 1, 1, 0,
+                    1, 1, 1, 3, 3, 0, 1, 1, 3, 3, 1, 0,
+                    1, 1, 1, 1, 1, 0, 1, 1, 3, 3, 1, 0,
+                    3, 3, 3, 3, 1, 0, 1, 2, 3, 3, 1, 0,
+                    3, 3, 3, 3, 1, 0, 1, 1, 3, 3, 1, 0,
+                    0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0,
+                    0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+                    ];
+            break;
+            default:
+                return [
+                    1, 1, 2, 1, 0, 0, 0, 0, 0, 0, 1, 1,
+                    3, 3, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1,
+                    3, 3, 1, 1, 2, 0, 3, 3, 3, 3, 0, 0,
+                    3, 3, 1, 3, 3, 0, 3, 3, 3, 3, 2, 0,
+                    3, 3, 1, 3, 3, 0, 1, 1, 2, 1, 1, 0,
+                    1, 1, 2, 3, 3, 0, 1, 1, 1, 1, 1, 0,
+                    1, 1, 1, 3, 3, 0, 1, 1, 3, 3, 1, 0,
+                    1, 1, 1, 1, 1, 0, 1, 1, 3, 3, 1, 0,
+                    3, 3, 3, 3, 1, 0, 1, 2, 3, 3, 1, 0,
+                    3, 3, 3, 3, 1, 0, 1, 1, 3, 3, 1, 0,
+                    0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0,
+                    0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+                    ];
+            break;
+        }
+        
     }
 
     drawText(x, y, text, size){
