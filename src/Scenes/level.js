@@ -25,6 +25,16 @@ export default class Level extends Phaser.Scene {
 
     }
 
+    addCherries(num){
+        this.remainingCherries += num
+    }
+
+    addScore(points){
+        this.score += points
+        this.updateUI()
+    }
+
+
     create(){
         let map = this.loadMap(this.level);
         this.mapIndex = []
@@ -125,7 +135,8 @@ export default class Level extends Phaser.Scene {
     }
 
     update(t, dt){
-        if(this.remainingEnemies <= 0){
+        // victoria
+        if(this.remainingEnemies <= 0 || this.remainingCherries <= 0){
             this.scene.start('end', {
                 level: this.level,
                 score: this.score,
@@ -134,6 +145,7 @@ export default class Level extends Phaser.Scene {
             })
 
         }
+        // derrota
         else if(this.lives <= 0){
             this.scene.start('end', {
                 level: this.level,
@@ -169,11 +181,6 @@ export default class Level extends Phaser.Scene {
     updateUI(){
         this.scoreText.setText("SCORE: " + this.score)
         this.livesText.setText("x " + this.lives)
-    }
-
-    addScore(points){
-        this.score += points
-        this.updateUI()
     }
 
     killPlayer(){
