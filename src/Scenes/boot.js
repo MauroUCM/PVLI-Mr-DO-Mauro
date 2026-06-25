@@ -36,29 +36,38 @@ export default class Boot extends Phaser.Scene {
 	// Creación de la escena.
 	create() {
 		this.createMrDoAnimations()
-		this.createCreepAnimations()
+		this.createDinoAnimations()
 <		this.scene.start('menu')
 	}
 
-	// Animaciones del Pingüino
+	// Animaciones de Mr Do
 	createMrDoAnimations(){
+		// andar normal
 		this.anims.create({
 			key: 'mrDoWalk',
 			frames: this.anims.generateFrameNumbers('mr_do', {start:0, end:2}),
-			frameRate: 5,
+			frameRate: 8,
 			repeat: -1
 		});
 
+		// andar con bola
 		this.anims.create({
 			key: 'mrDoWalkBall',
 			frames: this.anims.generateFrameNumbers('mr_do', {start:3, end:5}),
-			frameRate: 5,
+			frameRate: 8,
 			repeat: -1
 		});
 	}
 
-	// Animaciones de la Rata
-	createCreepAnimations(){
+	// Animaciones de los dinos
+	createDinoAnimations(){
+		// andar norml
+		this.anims.create({
+			key: 'dinoWalk',
+			frames: this.anims.generateFrameNumbers('dino', {start:0, end:2}),
+			frameRate: 8,
+			repeat: -1
+		});
 
 	}
 }

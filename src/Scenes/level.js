@@ -37,8 +37,10 @@ export default class Level extends Phaser.Scene {
 
     create(){
         let map = this.loadMap(this.level);
+
         this.mapIndex = []
-        this.enemyIndex = []
+        this.enemies = []
+        this.playerBall
 
         // physic groups
         this.mapTilesGrp = this.physics.add.staticGroup()
@@ -101,6 +103,8 @@ export default class Level extends Phaser.Scene {
         // ball collisions
         this.physics.add.collider(this.ballGrp, this.mapTilesGrp)
         this.physics.add.collider(this.ballGrp, limits)
+        this.physics.add.collider(this.ballGrp, limits)
+
         this.physics.add.overlap(this.ballGrp, this.enemyGrp, (ball, enemy)=>{
             enemy.die('regular')
             this.remainingEnemies--
@@ -159,6 +163,7 @@ export default class Level extends Phaser.Scene {
     spawnBall(x, y, dir){
         let ball = new Ball(this, x, y, dir).setScale(0.6)
         this.ballGrp.add(ball)
+        this.playerBall = ball
         ball.setDirection(dir)
         ball.body.setBounce(1)
     }
@@ -171,7 +176,7 @@ export default class Level extends Phaser.Scene {
         let dino = new Dino(this, x, y).setScale(2)
         this.currentEnemies++;
         this.enemyGrp.add(dino)
-        this.enemyIndex.push(dino)
+        this.enemies.push(dino)
     }
 
     spawnBonus(x, y){
@@ -191,10 +196,13 @@ export default class Level extends Phaser.Scene {
 
     resetLevel(){
         // kill all enemies 
-        this.enemyIndex.forEach((dino)=>{
+        this.enemies.forEach((dino)=>{
             dino.destroy()
         })
-        this.enemyIndex = []
+        this.enemies = []
+
+        if(this.playerBall != null) this.playerBall.destroy()
+        this.player.reload()
 
         this.add.existing(new DinoSpawner(this, this.game.config.width * 0.47, this.game.config.height * 0.51, this.remainingEnemies).setScale(2).setOrigin(0.5))
         this.player.resetOGPosition()

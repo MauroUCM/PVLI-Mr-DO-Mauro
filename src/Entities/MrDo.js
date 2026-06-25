@@ -23,7 +23,7 @@ export default class MrDo extends Character{
 
     preUpdate(t, dt){
         super.preUpdate(t, dt)
-
+        
         this.manageInput()
     }
 

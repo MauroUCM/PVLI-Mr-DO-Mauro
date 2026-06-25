@@ -95,15 +95,19 @@ export default class Menu extends Phaser.Scene {
     chooseSelectedOption(){
         switch(this.menuState){
             case 1:
-            this.scene.start('level', {
-                level: 0,
-                score: 0,
-                lives: 3
-            })
+                this.scene.start('level', {
+                    level: 0,
+                    score: 0,
+                    lives: 3
+                })
             break;
             case 2:
-                console.log("New game")
-                break;
+                this.scene.start('level', {
+                    level: 0,
+                    score: 0,
+                    lives: 3
+                })
+            break;
             default:
                 console.log("ERROR: Unexpected menu state when selecting")
                 break;
