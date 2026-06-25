@@ -113,7 +113,13 @@ export default class Level extends Phaser.Scene {
         })
 
         // enemy collisions
-        this.physics.add.collider(this.enemyGrp, limits)
+        this.physics.add.collider(this.enemyGrp, limits, (enemy) =>{
+
+        })
+        this.physics.add.collider(this.enemyGrp, this.mapTilesGrp, () =>{
+            
+        })
+
         //#endregion
     }
 
@@ -122,9 +128,18 @@ export default class Level extends Phaser.Scene {
             this.scene.start('end', {
                 level: this.level,
                 score: this.score,
-                lives: this.lives
+                lives: this.lives,
+                victory: true
             })
 
+        }
+        else if(this.lives <= 0){
+            this.scene.start('end', {
+                level: this.level,
+                score: this.score,
+                lives: this.lives,
+                victory: false
+            })
         }
     }
 
@@ -204,6 +219,10 @@ export default class Level extends Phaser.Scene {
             break;
         }
         
+    }
+
+    resetLevel(){
+
     }
 
     drawText(x, y, text, size){
