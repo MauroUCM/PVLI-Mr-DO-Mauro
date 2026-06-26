@@ -130,7 +130,7 @@ export default class Level extends Phaser.Scene {
         // enemy collisions
         this.physics.add.collider(this.enemyGrp, limits, (enemy) =>{
             enemy.relocateToCenter()
-            enemy.changeDirection(Math.floor(Math.random() * 4))
+            enemy.changeDirection (Math.floor(Math.random() * 4))
         })
         this.physics.add.collider(this.enemyGrp, this.mapTilesGrp, (enemy) =>{
             enemy.relocateToCenter()
@@ -228,6 +228,23 @@ export default class Level extends Phaser.Scene {
                     0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0,
                     0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1,
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+                    ];
+            break;
+            case 1:
+                return [
+                    1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+                    1, 0, 0, 1, 1, 1, 1, 1, 2, 0, 0, 1,
+                    0, 0, 3, 3, 3, 3, 2, 1, 1, 1, 0, 0,
+                    0, 2, 3, 3, 3, 3, 2, 1, 3, 3, 1, 0,
+                    1, 1, 1, 2, 1, 1, 1, 1, 3, 3, 1, 0,
+                    3, 3, 1, 1, 1, 1, 1, 1, 3, 3, 1, 0,
+                    3, 3, 1, 1, 1, 0, 1, 1, 3, 3, 0, 0,
+                    3, 3, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1,
+                    3, 3, 1, 0, 0, 0, 1, 2, 1, 1, 3, 3,
+                    1, 0, 0, 0, 3, 3, 3, 3, 1, 1, 3, 3,
+                    0, 0, 1, 1, 3, 3, 3, 3, 1, 1, 3, 3,
+                    0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
                     ];
             break;
             default:
