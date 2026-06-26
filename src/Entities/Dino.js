@@ -7,14 +7,16 @@ export default class Dino extends Character{
         super(scene, x, y, 'dino')
         this.speed = DINO_SPEED;
          
-
+        this.currentDirection = 0
+        this.setDinoVel(0)
         this.play('dinoWalk')
     }
 
     preUpdate(t, dt){
         super.preUpdate(t, dt)
-        this.body.setVelocity(0, this.speed)
+        this.body.setVelocity(0, -this.speed)
 
+        Math.floor(Math.random() * 4)
     }
 
     relocateToCenter(){
@@ -22,8 +24,25 @@ export default class Dino extends Character{
         this.y = this.getClosestSquareCenterY()
     }
 
-    move(){
-
+    setDinoVel(direc){
+        switch(direc){
+            case 0: // arriba
+                this.body.setVelocity(0, -this.speed)
+                this.currentDirection = 0
+            break;
+            case 1: // derecha
+                this.body.setVelocity(this.speed, 0)
+                this.currentDirection = 1
+            break;
+            case 2: // abajo
+                this.body.setVelocity(0, this.speed)
+                this.currentDirection = 2
+            break;
+            case 3: // izquierda
+                this.body.setVelocity(-this.speed, 0)
+                this.currentDirection = 3
+            break;
+        }
 
     }
 
