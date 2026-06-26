@@ -13,10 +13,10 @@ export default class Level extends Phaser.Scene {
 	}
 
     init(data){
-        this.level = 0
+        this.level = data.level
         this.score = data.score
         this.lives = data.lives
-        this.remainingCherries = 0;
+        this.remainingCherries = 0
         this.remainingEnemies = 7
         this.currentEnemies = 0
     }
