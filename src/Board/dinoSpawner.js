@@ -1,4 +1,4 @@
-const SPAWN_COOLDOWN = 2000
+const SPAWN_COOLDOWN = 3000
 
 export default class DinoSpawner extends Phaser.GameObjects.Sprite{
     constructor(scene, x, y, enemies){
