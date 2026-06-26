@@ -1,6 +1,6 @@
 import Character from "./Character.js";
 
-const DINO_SPEED = 80;
+const DINO_SPEED = 75;
 
 export default class Dino extends Character{
     constructor(scene, x, y){
