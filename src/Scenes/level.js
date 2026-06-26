@@ -130,11 +130,11 @@ export default class Level extends Phaser.Scene {
         // enemy collisions
         this.physics.add.collider(this.enemyGrp, limits, (enemy) =>{
             enemy.relocateToCenter()
-            enemy.setDinoVel(Math.floor(Math.random() * 4))
+            enemy.changeDirection(Math.floor(Math.random() * 4))
         })
         this.physics.add.collider(this.enemyGrp, this.mapTilesGrp, (enemy) =>{
             enemy.relocateToCenter()
-            enemy.setDinoVel(Math.floor(Math.random() * 4))        
+            enemy.changeDirection(Math.floor(Math.random() * 4))        
         })
 
         //#endregion
