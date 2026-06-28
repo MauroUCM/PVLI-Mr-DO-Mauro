@@ -85,7 +85,7 @@ export default class Level extends Phaser.Scene {
         //#region colisions
         // player collisions
         this.physics.add.collider(this.player, limits)
-        this.physics.add.collider(this.player, this.applesGrp, (player, apple)=>{
+        this.physics.add.collider(this.player, this.applesGrp, (player)=>{
             if(player.body.touching.up){
                  this.killPlayer()
             }
@@ -116,20 +116,7 @@ export default class Level extends Phaser.Scene {
             ball.destroy()
             this.player.reload()
         })
-        this.physics.add.collider(this.ballGrp,this.mapTilesGrp, (tile, ball) =>{
-            // if(tile.body.touching.up){
-            //     ball.ballBounce(0)
-            // }
-            // if(tile.body.touching.down){
-            //     ball.ballBounce(1)
-            // }
-            // if(tile.body.touching.right){
-            //     ball.ballBounce(2)
-            // }
-            // if(tile.body.touching.left){
-            //     ball.ballBounce(3)
-            // }
-        })
+        this.physics.add.collider(this.ballGrp,this.mapTilesGrp)
 
         // enemy collisions
         this.physics.add.collider(this.enemyGrp, limits, (enemy) =>{
@@ -142,6 +129,14 @@ export default class Level extends Phaser.Scene {
         })
 
         //#endregion
+
+        //#region callbacks
+        this.player.on('animationcomplete-mrDie', () => {
+            this.resetLevel()
+            this.updateUI()
+        })
+        //#endregion
+
     }
 
     update(t, dt){
@@ -196,8 +191,11 @@ export default class Level extends Phaser.Scene {
 
     killPlayer(){
         this.lives -= 1
-        this.resetLevel()
-        this.updateUI()
+
+        this.player.dead = true;
+        this.player.play('mrDie')
+
+        if(this.playerBall != null) this.playerBall.destroy()
     }
 
     resetLevel(){
@@ -211,12 +209,11 @@ export default class Level extends Phaser.Scene {
         this.player.reload()
 
         this.add.existing(new DinoSpawner(this, this.game.config.width * 0.47, this.game.config.height * 0.51, this.remainingEnemies).setScale(2).setOrigin(0.5))
-        this.player.resetOGPosition()
+        this.player.resetPlayer()
     }
 
-    // 0 = vacio, 1 = tierra, 2 = manzana, 3 = cereza
     loadMap(level){
-        switch(level){
+        switch(level){  // 0 = vacio, 1 = tierra, 2 = manzana, 3 = cereza
             case 0:
                 return [
                     1, 1, 2, 1, 0, 0, 0, 0, 0, 0, 1, 1,

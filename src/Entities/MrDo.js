@@ -1,6 +1,6 @@
 import Character from "./Character.js";
 
-const PLAYER_SPEED = 80;
+const PLAYER_SPEED = 80
 const SLOWED_RATIO = 0.7
 
 export default class MrDo extends Character{
@@ -9,7 +9,8 @@ export default class MrDo extends Character{
             
         this.body.setCircle(5, 2.5, 2.5)
         this._speedRatio = 1
-        this.ball = true;
+        this.ball = true
+        this.dead = false
         this.setupKeys()
 
         this.OGPosition = { x: x, y: y };
@@ -23,8 +24,13 @@ export default class MrDo extends Character{
 
     preUpdate(t, dt){
         super.preUpdate(t, dt)
-        
-        this.manageInput()
+
+        if(this.dead) {
+            this.body.setVelocity(0, 0)
+            this.setFlipX(false)
+            this.setRotation(0)
+        }
+        else this.manageInput()       
     }
 
     setupKeys(){
@@ -39,34 +45,42 @@ export default class MrDo extends Character{
         })
 
         this.wKey.on('down', () =>{
-            this.setX(this.getClosestSquareCenterX());
-            this.setRotation(-90)
-            this.setFlipX(false)
-            this.activateWalkAnim()
+            if(!this.dead) {
+                this.setX(this.getClosestSquareCenterX());
+                this.setRotation(-90)
+                this.setFlipX(false)
+                this.activateWalkAnim()
+            }
         })
         this.aKey.on('down', () =>{
-            this.setY(this.getClosestSquareCenterY())
-            this.setRotation(0)
-            this.setFlipX(true)
-            this.activateWalkAnim()
+            if(!this.dead) {
+                this.setY(this.getClosestSquareCenterY())
+                this.setRotation(0)
+                this.setFlipX(true)
+                this.activateWalkAnim()
+            }
         })
         this.sKey.on('down', () =>{
-            this.setX(this.getClosestSquareCenterX());
-            this.setRotation(-90)
-            this.setFlipX(true)
-            this.activateWalkAnim()
+            if(!this.dead) {
+                this.setX(this.getClosestSquareCenterX());
+                this.setRotation(-90)
+                this.setFlipX(true)
+                this.activateWalkAnim()
+            }
         })
         this.dKey.on('down', () =>{
-            this.setY(this.getClosestSquareCenterY())
-            this.setRotation(0)
-            this.setFlipX(false)
-            this.activateWalkAnim()
+            if(!this.dead) {
+                this.setY(this.getClosestSquareCenterY())
+                this.setRotation(0)
+                this.setFlipX(false)
+                this.activateWalkAnim()
+            }
         })
     }
 
     manageInput(){
         let speed = PLAYER_SPEED * this._speedRatio
-
+     
         if(this.wKey.isDown){   // up
             this.body.setVelocity(0, -speed)
         }
@@ -107,8 +121,9 @@ export default class MrDo extends Character{
         this.play('mrDoWalkBall')
     }
 
-    resetOGPosition(){
+    resetPlayer(){
         this.setPosition(this.OGPosition.x, this.OGPosition.y)
+        this.dead = false
     }
 
     throwBall(){

@@ -57,6 +57,13 @@ export default class Boot extends Phaser.Scene {
 			frameRate: 8,
 			repeat: -1
 		});
+
+		this.anims.create({
+			key: 'mrDie',
+			frames: this.anims.generateFrameNumbers('dead_mr_do', {start:0, end:4}),
+			frameRate: 3,
+			repeat: 0
+		});
 	}
 
 	// Animaciones de los dinos
