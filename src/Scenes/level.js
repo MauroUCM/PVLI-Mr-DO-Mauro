@@ -85,11 +85,15 @@ export default class Level extends Phaser.Scene {
         //#region colisions
         // player collisions
         this.physics.add.collider(this.player, limits)
-        this.physics.add.collider(this.player, this.applesGrp)
+        this.physics.add.collider(this.player, this.applesGrp, (player, apple)=>{
+            if(player.body.touching.up){
+                 this.killPlayer()
+            }
+        })
         this.physics.add.overlap(this.player, this.mapTilesGrp, (player, sqr)=>{
             sqr.squareAction(player)
         })
-        this.physics.add.overlap(this.player, this.enemyGrp, (player, enemy)=>{
+        this.physics.add.overlap(this.player, this.enemyGrp, ()=>{
             this.killPlayer();
         })
         this.physics.add.overlap(this.player, this.ballGrp, (player, ball)=>{
