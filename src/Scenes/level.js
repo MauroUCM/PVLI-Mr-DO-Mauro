@@ -16,6 +16,7 @@ export default class Level extends Phaser.Scene {
         this.level = data.level
         this.score = data.score
         this.lives = data.lives
+
         this.remainingCherries = 0
         this.remainingEnemies = 7
         this.currentEnemies = 0
@@ -174,8 +175,11 @@ export default class Level extends Phaser.Scene {
     }
 
     spawnDino(x, y){
-        let dino = new Dino(this, x, y).setScale(2)
         this.currentEnemies++;
+
+        let dino = new Dino(this, x, y).setScale(2)
+        dino.changeDirection(Math.floor(Math.random() * 4))
+
         this.enemyGrp.add(dino)
         this.enemies.push(dino)
     }

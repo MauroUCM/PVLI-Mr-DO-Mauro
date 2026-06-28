@@ -61,7 +61,7 @@ export default class Menu extends Phaser.Scene {
             }
         })
 
-        this.upKey = this.input.keyboard.addKey("up")
+        this.upKey = this.input.keyboard.addKey("W")
         this.upKey.on('down', ()=>{
             if(this.menuState > 1){
                 this.menuState = this.menuState - 1
@@ -69,7 +69,7 @@ export default class Menu extends Phaser.Scene {
             }
         })
 
-        this.downkey = this.input.keyboard.addKey("down")
+        this.downkey = this.input.keyboard.addKey("S")
         this.downkey.on('down', ()=>{
             if(this.menuState < 2){
                 this.menuState = this.menuState + 1
