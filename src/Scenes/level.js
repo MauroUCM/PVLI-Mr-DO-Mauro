@@ -6,6 +6,8 @@ import Dino from "../Entities/Dino.js";
 import DinoSpawner from "../Board/dinoSpawner.js";
 import BonusItem from "../Board/bonusItem.js";
 
+const DEFAULT_RELOAD_TIME = 3000
+
 export default class Level extends Phaser.Scene {
 	constructor(){
 		super({ key: 'level' });
@@ -17,6 +19,7 @@ export default class Level extends Phaser.Scene {
         this.score = data.score
         this.lives = data.lives
 
+        this.reloadTime = DEFAULT_RELOAD_TIME + (500 * this.level)
         this.remainingCherries = 0
         this.remainingEnemies = 7
         this.currentEnemies = 0
@@ -98,8 +101,8 @@ export default class Level extends Phaser.Scene {
             this.killPlayer();
         })
         this.physics.add.overlap(this.player, this.ballGrp, (player, ball)=>{
-            player.reload()
             ball.destroy()
+            player.reload()
         })
         this.physics.add.overlap(this.player, this.bonusItemGrp, ()=>{
             this.addScore((this.level + 1) * 500)
@@ -115,7 +118,9 @@ export default class Level extends Phaser.Scene {
             this.remainingEnemies--
             this.currentEnemies--
             ball.destroy()
-            this.player.reload()
+            this.time.delayedCall(this.reloadTime, ()=>{
+                this.player.reload()
+            })
         })
         this.physics.add.collider(this.ballGrp,this.mapTilesGrp)
 
