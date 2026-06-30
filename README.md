@@ -43,7 +43,9 @@ Sprite del *Mr. Do*, el personaje controlado por el jugador.
 - Cuando *Mr Do* pasa a traves de una casilla ocupada por tierra el excavará en ella dejando la casilla vacia aunque se verá ligeramente ralentizado.
 ### Combate
 - El **arma principal** de *Mr. Do* es una *power ball* que rebota por los túneles hasta que vuelve a *Mr. Do* o impacta contra un enemigo matándolo.
-  - La *power ball* no se podrá lanzar de otra vez hasta que vuelva hasta *Mr. Do* o pase un tiempo determinado tras impactar contra el enemigo. Este tiempo aumenta tras cada lanzamiento dejando a *Mr. Do* indefenso mientras tanto.
+  - La *power ball* no se podrá lanzar de otra vez hasta que vuelva hasta *Mr. Do* o pase un tiempo determinado tras impactar contra el enemigo. Este tiempo aumenta tras cada nivel dejando a *Mr. Do* indefenso mientras tanto.
+    - La fórmula que calcula el tiempo es:
+        > Tiempo base (3000ms) + (nivel * 500)
 - **Las manzanas**, son objetos repartidos por el mapa en sus posiciones designadas, en un principio estáticos.
   - Estas pueden ser empujados horizontalmente por *Mr. Do*.
   - Si una manzana tiene una casilla vacia debajo suya caera aplastando tanto a *Mr. Do* como los enemigos. Si cae a una altura de por lo menos 2 casillas se romperá.
